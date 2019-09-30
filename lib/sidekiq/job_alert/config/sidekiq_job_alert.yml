@@ -1,0 +1,19 @@
+default: &default
+  :webhook_url: "Your slack token"
+  :username: "Sidekiq_JobAlert"
+  :channel: "Your channel"
+  :link_names: 'false'
+  :alerting_sidekiq_dead_jobs:
+    :message: "There are %<job_counter>d dead jobs in %<env>s \nLink: %<url>s"
+    :url: "http://localhost:3000/sidekiq/morgue"
+  :alerting_sidekiq_all_waiting_jobs:
+    :message: "There are %<job_counter>d jobs in %<env>s \nLink: %<url>s"
+    :url: "http://localhost:3000/sidekiq/morgue"
+    :all:
+      :limit: 10
+development:
+  <<: *default
+staging:
+  <<: *default
+production:
+  <<: *default
