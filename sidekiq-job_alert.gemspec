@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["feng.zhang"]
   spec.email         = ["cst.feng@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Send alert to Slack if too many waiting jobs or dead jobs}
+  spec.description   = %q{Send alert to Slack if too many waiting jobs or dead jobs}
+  spec.homepage      = "https://github.com/arthurbryant/sidekiq-job_alert"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
