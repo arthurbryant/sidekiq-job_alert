@@ -4,10 +4,10 @@ require 'sidekiq/job_alert'
 module Sidekiq
   module JobAlert
     class CLI < Thor
-      desc "alert config_path", "Send sidekiq queue alert to slack"
-      option :config_path
+      desc "alert config", "Send sidekiq queue alert to slack"
+      option :config
       def alert
-        Sidekiq::JobAlert::Notifier.new(options[:config_path]).call
+        Sidekiq::JobAlert::Notifier.new(options[:config]).call
       end
     end
   end

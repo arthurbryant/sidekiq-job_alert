@@ -6,8 +6,8 @@ require 'sidekiq/job_alert/queue'
 module Sidekiq
   module JobAlert
     class Notifier
-      def initialize(config_path)
-        @slack_config ||= YAML::load_file(config_path)
+      def initialize(config)
+        @slack_config ||= YAML::load_file(config)
         @message = ''
       end
 
