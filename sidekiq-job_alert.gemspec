@@ -37,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "sidekiq", "~> 4.2.1"
   spec.add_dependency "slack-notifier", "~> 2.3.2"
+  spec.add_dependency "thor"
 end
