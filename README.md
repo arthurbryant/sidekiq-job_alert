@@ -44,7 +44,7 @@ Or install it yourself as:
 2. run
 
 ```ruby
-bundle exec sidekiq_job_alert alert --config ./sidekiq_job_alert.yml
+sidekiq_job_alert alert --config ./sidekiq_job_alert.yml
 ```
 
 ## Development
