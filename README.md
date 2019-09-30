@@ -53,6 +53,9 @@ or
 Sidekiq::JobAlert::Notifier.new('config/sidekiq_job_alert.yml').call
 ```
 
+## Example
+![image](https://user-images.githubusercontent.com/853200/65889183-c2612480-e3db-11e9-9c9c-cdae69ef2863.png)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
