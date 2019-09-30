@@ -13,7 +13,7 @@ module Sidekiq
 
       def call
         @message += make_dead_job_message
-        @message += make_job_message('alert_total_waiting_jobs', 'all')
+        @message += make_all_job_message('alert_total_waiting_jobs')
         keys = @slack_config[:alert_each_waiting_job].keys
         keys.delete(:message)
         keys.each do |key|
@@ -31,6 +31,12 @@ module Sidekiq
       def make_dead_job_message
         cnt = Sidekiq::JobAlert::Queue.dead_job_cnt
         cnt.positive? ? make_message('alert_dead_jobs', cnt) : ''
+      end
+
+      def make_all_job_message(type)
+        cnt = Sidekiq::JobAlert::Queue.all_job_cnt
+        limit = @slack_config[type.to_sym][:all][:limit].to_i
+        cnt > limit ? make_message(type, cnt) : ''
       end
 
       def make_job_message(type, queue_name)
