@@ -1,0 +1,18 @@
+:webhook_url: "YOUR SLACK INCOMING WEBHOOK"
+:username: "Sidekiq_JobAlert"
+:channel: "YOUR CHANNEL"
+:link_names: 'false'
+:sidekiq_url: "http://localhost:3000/sidekiq/" # Replace with your sidekiq url
+:alert_dead_jobs:
+  :message: "%<job_counter>d dead jobs.\n"
+:alert_total_waiting_jobs:
+  :message: "Totally %<job_counter>d waiting jobs.\n"
+  :all:
+    :limit: 0 # Only send alert when total waiting jobs over limit
+:alert_each_waiting_job:
+  :message: "%<job_counter>d waiting jobs in %<queue_name>s.\n"
+  :queue_1:
+    :limit: 0 # Only send alert when queue_1's jobs over limit
+  :queue_2:
+    :limit: 0 # Only send alert when queue_2's jobs over limit
+
