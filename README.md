@@ -19,7 +19,7 @@ Or install it yourself as:
     $ gem install sidekiq-job_alert
 
 ## Usage
-1. copy `sidekiq_job_alert.yml` to your local and config it
+- copy `sidekiq_job_alert.yml` to your local and config it
 
 ```yaml
 :webhook_url: "YOUR SLACK INCOMING WEBHOOK"
@@ -41,10 +41,16 @@ Or install it yourself as:
     :limit: 0 # Only send alert when queue_2's jobs over limit
 ```
 
-2. run
+- run
 
 ```ruby
 sidekiq_job_alert alert --config ./sidekiq_job_alert.yml
+```
+
+or
+
+```ruby
+Sidekiq::JobAlert::Notifier.new('config/sidekiq_job_alert.yml').call
 ```
 
 ## Development
