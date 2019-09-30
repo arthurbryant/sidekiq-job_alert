@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "sidekiq/job_alert"
+
+Sidekiq::JobAlert::CLI.start(ARGV)
