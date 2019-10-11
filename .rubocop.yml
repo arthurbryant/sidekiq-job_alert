@@ -12,3 +12,9 @@
 # Allow both single and double quotation
 Style/StringLiterals:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100

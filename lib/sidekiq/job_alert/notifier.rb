@@ -7,7 +7,7 @@ module Sidekiq
   module JobAlert
     class Notifier
       def initialize(config)
-        @slack_config ||= YAML.load_file(config)
+        @slack_config = YAML.load_file(config)
         @message = ''
       end
 
