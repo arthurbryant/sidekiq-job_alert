@@ -1,6 +1,6 @@
 # Sidekiq::JobAlert
 
-Sidekiq-job_alert is a gem to send alert to slack to warn you when there are too many waiting jobs or dead jobs 
+Sidekiq-job_alert is a gem to send alert to slack to warn you when there are too many waiting jobs or dead jobs
 
 ## Installation
 
@@ -19,41 +19,37 @@ Or install it yourself as:
     $ gem install sidekiq-job_alert
 
 ## Usage
-- copy `sidekiq_job_alert.yml` to your local and config it
+- config
+  - copy `sidekiq_job_alert.yml` to your local and edit it to fit your needs
+  - example:
 
 ```yaml
-:webhook_url: "YOUR SLACK INCOMING WEBHOOK"
-:username: "Sidekiq_JobAlert"
-:channel: "YOUR CHANNEL"
+:webhook_url: "https://hooks.slack.com/services/xxxx"
+:username: "Sidekiq_Job_Alert"
+:channel: "sidekiq-job"
 :link_names: 'false'
-:sidekiq_url: "http://localhost:3000/sidekiq/" # Replace with your sidekiq url
+:sidekiq_url: "http://localhost:3000/sidekiq/"
 :alert_dead_jobs:
   :message: "%<job_counter>d dead jobs.\n"
 :alert_total_waiting_jobs:
   :message: "Totally %<job_counter>d waiting jobs.\n"
   :all:
-    :limit: 0 # Only send alert when total waiting jobs over limit
+    :limit: 50
 :alert_each_waiting_job:
   :message: "%<job_counter>d waiting jobs in %<queue_name>s.\n"
-  :queue_1:
-    :limit: 0 # Only send alert when queue_1's jobs over limit
-  :queue_2:
-    :limit: 0 # Only send alert when queue_2's jobs over limit
+  :create_place:
+    :limit: 10
+  :update_place:
+    :limit: 10
 ```
 
 - run
+  - command line tool
+    - `sidekiq_job_alert alert --config ./sidekiq_job_alert.yml`
+  - rails application
+    - ` Sidekiq::JobAlert::Notifier.new('config/sidekiq_job_alert.yml').call `
+- notification
 
-```ruby
-sidekiq_job_alert alert --config ./sidekiq_job_alert.yml
-```
-
-or
-
-```ruby
-Sidekiq::JobAlert::Notifier.new('config/sidekiq_job_alert.yml').call
-```
-
-## Example
 ![image](https://user-images.githubusercontent.com/853200/65889183-c2612480-e3db-11e9-9c9c-cdae69ef2863.png)
 
 ## Development
